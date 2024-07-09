@@ -1,4 +1,5 @@
 import Brands from "../components/Brands"
+import Grid from "../components/Grid"
 import Hero from "../components/Hero"
 import NewArrival from "../components/NewArrival"
 import Service from "../components/Service"
@@ -15,6 +16,7 @@ const Home = () => {
       <Service />
       <NewArrival />
       <ShowCase />
+      <Grid />
       <Brands />
       <Testimonials />
       <Footer />

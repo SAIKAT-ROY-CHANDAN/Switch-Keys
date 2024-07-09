@@ -44,9 +44,9 @@ export const BentoGridItem = ({
         >
             <div className="h-full">
                 <div className="bg-gradient-to-r from-slate-900 to-slate-700 
-                group-hover/bento:bg-gradient-to-r from-slate-500 to-slate-800 flex items-center justify-center">
+                group-hover/bento:bg-gradient-to-r  flex items-center justify-center">
                     <img
-                        className="group-hover/bento:rotate-1 group-hover/bento:scale-95 duration-200 h-[23vh] w-fit object-contain"
+                        className="group-hover/bento:rotate-2 group-hover/bento:scale-95 duration-200 h-[23vh] w-fit object-contain"
                         src={testHeroImage} alt="item" />
                 </div>
                 {/* {header} */}

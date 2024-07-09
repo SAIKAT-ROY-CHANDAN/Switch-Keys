@@ -13,7 +13,7 @@ const Brands = () => {
                         <img
                             key={key}
                             src={logo.url}
-                            className="h-10 w-28 px-2 brightness-0 hover:scale-105 duration-200 transition-transform dark:invert"
+                            className="h-14 w-36 px-2 brightness-0 hover:scale-105 duration-200 transition-transform dark:invert"
                             alt={`${logo.name}`}
                         />
                     ))}
