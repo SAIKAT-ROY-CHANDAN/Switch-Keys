@@ -15,7 +15,7 @@ const Grid = () => {
 
     return (
         <div className=" bg-[#F0F0F0] py-20">
-            <motion.div initial={{ y: 100 }} whileInView={{ y: 0, animationDuration: 'inherit' }} viewport={{ amount: 'some' }} className="text-center">
+            <motion.div initial={{ y: 100 }} whileInView={{ y: 0 }} viewport={{ amount: 'some' }} className="text-center">
                 <span className="2xl:text-[12rem] 
                 text-[16vw] font-bold" style={textStyle}>FREEBIRD</span>
             </motion.div>

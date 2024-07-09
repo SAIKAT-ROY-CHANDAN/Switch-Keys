@@ -27,7 +27,6 @@ const Footer = () => {
   }
   return (
     <footer
-      aria-labelledby="footer-heading"
       className="font-inter w-full  border-t border-black/5"
     >
       <h2 id="footer-heading" className="sr-only">

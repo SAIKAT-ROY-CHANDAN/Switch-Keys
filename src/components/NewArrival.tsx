@@ -1,7 +1,12 @@
+import { useGetProductsQuery } from "@/redux/api/baseApi"
 import NewArrivalCard from "./NewArrivalCard"
+import { TProducts } from "@/types";
 
 
 const NewArrival = () => {
+
+  const { data } = useGetProductsQuery({})
+
   return (
     <div>
       <div className="flex flex-col gap-3 items-center">
@@ -9,9 +14,12 @@ const NewArrival = () => {
         <a href="#shop" className="text-def/80 font-medium">Shop Now</a>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 md:gap-x-1 gap-x-2">
-        {Array.from({ length: 4 }).map((_, index) => (
-          <NewArrivalCard key={index} />
+        {data?.data.map((item: TProducts) => (
+          <NewArrivalCard key={item._id} item={item} />
         ))}
+        {/* {Array.from({ length: 4 }).map((_, index) => (
+          <NewArrivalCard key={index} />
+        ))} */}
       </div>
       <div className="flex justify-center mt-5">
         <button className="p-[2px] relative">
