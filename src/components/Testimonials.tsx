@@ -7,7 +7,7 @@ const Testimonials = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-5 py-12">
       <h1 className="mb-1 max-w-2xl text-center text-2xl font-semibold tracking-tighter text-gray-900 md:text-4xl dark:text-gray-100">
-        Why people love SyntaxUI
+        Why people love <span className="text-def">Switch</span>
       </h1>
       <p className="max-w-2xl text-center text-sm font-light text-gray-600 md:text-base dark:text-gray-400">
         SyntaxUI is loved by the community and is used by many companies. It is
