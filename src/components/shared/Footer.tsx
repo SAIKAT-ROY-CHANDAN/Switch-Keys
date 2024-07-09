@@ -28,12 +28,12 @@ const Footer = () => {
   return (
     <footer
       aria-labelledby="footer-heading"
-      className="font-inter w-full max-w-7xl mx-auto"
+      className="font-inter w-full  border-t border-black/5"
     >
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="mx-auto max-w-7xl px-6 py-10 border-t border-black/5 shadow-sm bg-white/85">
+      <div className="mx-auto max-w-7xl px-6 py-10 shadow-sm bg-white/85">
         <div className="flex flex-col justify-between lg:flex-row">
           <div className="space-y-8">
             <img
