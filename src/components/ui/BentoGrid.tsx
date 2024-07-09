@@ -1,5 +1,5 @@
 import { cn } from "../../lib/utils"
-import testHeroImage from '../../assets/images/test-hero.jpg';
+
 
 export const BentoGrid = ({
     className,
@@ -32,9 +32,11 @@ export const BentoGridItem = ({
     title?: string | React.ReactNode;
     description?: string | React.ReactNode;
     header?: React.ReactNode;
-    icon?: React.ReactNode;
+    icon?: string;
     imgClassName?: React.ReactNode
 }) => {
+
+    console.log(icon);
     return (
         <div
             className={cn(
@@ -47,11 +49,12 @@ export const BentoGridItem = ({
                 group-hover/bento:bg-gradient-to-r  flex items-center justify-center">
                     <img
                         className="group-hover/bento:rotate-2 group-hover/bento:scale-95 duration-200 h-[23vh] w-fit object-contain"
-                        src={testHeroImage} alt="item" />
+                        src={icon} alt="item"
+                    />
                 </div>
                 {/* {header} */}
                 <div className="group-hover/bento:translate-x-2 transition duration-200">
-                    {icon}
+                    {/* {icon} */}
                     <div className="font-sans font-bold text-neutral-600 dark:text-neutral-200 mb-2 mt-2">
                         {title}
                     </div>

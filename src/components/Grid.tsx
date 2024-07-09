@@ -1,10 +1,10 @@
-import { useScroll, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import LayoutGrid from "./KeyBoardLayout";
 
 
 
 const Grid = () => {
-    const { scrollYProgress } = useScroll();
+
 
     const textStyle = {
         background: 'linear-gradient(180deg, rgba(26, 26, 26, 0.2), rgba(26, 26, 26, 0) 100%)',
@@ -12,12 +12,10 @@ const Grid = () => {
         WebkitTextFillColor: 'transparent'
     };
 
-    console.log(scrollYProgress);
-
 
     return (
         <div className=" bg-[#F0F0F0] py-20">
-            <motion.div initial={{y : 100}} whileInView={{y: 0, animationDuration: 'inherit'}} viewport={{amount: 'some'}} className="text-center">
+            <motion.div initial={{ y: 100 }} whileInView={{ y: 0, animationDuration: 'inherit' }} viewport={{ amount: 'some' }} className="text-center">
                 <span className="2xl:text-[12rem] 
                 text-[16vw] font-bold" style={textStyle}>FREEBIRD</span>
             </motion.div>

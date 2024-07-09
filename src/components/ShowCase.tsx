@@ -14,6 +14,7 @@ const ShowCase = () => {
             header: <Skeleton />,
             className: "md:col-span-2",
             // icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
+            icon: "https://images.unsplash.com/photo-1632365086223-cb3d38789f2b?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         },
         {
             title: "The Digital Revolution",
@@ -21,6 +22,7 @@ const ShowCase = () => {
             header: <Skeleton />,
             className: "md:col-span-1",
             // icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
+            icon: "https://images.unsplash.com/photo-1635896383799-06e1e0accda0?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         },
         {
             title: "The Art of Design",
@@ -28,6 +30,7 @@ const ShowCase = () => {
             header: <Skeleton />,
             className: "md:col-span-1",
             // icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
+            icon: "https://images.unsplash.com/photo-1636451096144-a4304c34c169?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         },
         {
             title: "The Power of Communication",
@@ -36,6 +39,7 @@ const ShowCase = () => {
             header: <Skeleton />,
             className: "md:col-span-2",
             // icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
+            icon: "https://images.unsplash.com/photo-1677346414290-d337cbc682a6?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         },
     ];
 
@@ -49,7 +53,7 @@ const ShowCase = () => {
                     description={item.description}
                     header={item.header}
                     className={item.className}
-                    // icon={item.icon}
+                    icon={item.icon}
                 />
             ))}
         </BentoGrid>

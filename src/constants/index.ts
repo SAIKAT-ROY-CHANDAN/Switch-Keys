@@ -2,33 +2,33 @@ export const navigation = [
   {
     id: "0",
     title: "Homes",
-    url: "#features",
+    url: "/",
   },
   {
     id: "1",
     title: "Products",
-    url: "#pricing",
+    url: "/products",
   },
   {
     id: "2",
     title: "Contacts",
-    url: "#how-to-use",
+    url: "/contacts",
   },
   {
     id: "3",
     title: "About",
-    url: "#roadmap",
+    url: "/about",
   },
   {
     id: "4",
     title: "Cart",
-    url: "#signup",
+    url: "/cart",
     onlyMobile: true,
   },
   {
     id: "5",
     title: "Dashboard",
-    url: "#login",
+    url: "/dashboard",
     onlyMobile: true,
   },
 ];
@@ -142,3 +142,5 @@ export const testimonials = [
     image: 'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa',
   },
 ]
+
+
