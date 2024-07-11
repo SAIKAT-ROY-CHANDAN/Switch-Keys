@@ -10,9 +10,12 @@ export const baseApi = createApi({
             })
         }),
         getSingleProducts: builder.query({
-            query: (id) => ({
-                url: `/product/${id}`
-            })
+            query: (id) => {
+                console.log(id);
+                return {
+                    url: `/product/${id}`
+                }
+            }
         })
     })
 })
