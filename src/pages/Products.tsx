@@ -1,4 +1,6 @@
 import ProductCard from "@/components/ProductCard"
+import RangeSlider from "@/components/RangeSlider"
+import LoadingAnimation from "@/components/shared/LoadingAnimation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -11,12 +13,22 @@ const Products = () => {
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState('')
   const [debouncedSearch, setDebouncedSearch] = useState('');
-  const { data, isLoading } = useGetProductsQuery({ sort, search: debouncedSearch })
+  const [priceRange, setPriceRange] = useState([0, 1000]);
+  const { data, isLoading } = useGetProductsQuery({
+    sort,
+    search: debouncedSearch,
+    minPrice: priceRange[0],
+    maxPrice: priceRange[1]
+  });
+
+  const debouncedSetPriceRange = debounce((values: number[]) => {
+    setPriceRange(values);
+  }, 300);
 
   useEffect(() => {
     const handler = debounce(() => {
       setDebouncedSearch(search);
-    }, 3000);
+    }, 2000);
     handler();
 
     return () => {
@@ -29,10 +41,14 @@ const Products = () => {
     setDebouncedSearch(search)
   }
 
+  const resetFilters = () => {
+    setSearch('');
+    setSort('');
+    setPriceRange([0, 1000]);
+  };
+
   if (isLoading) {
-    return (
-      <h1>Loading.....</h1>
-    )
+    return <LoadingAnimation />
   }
 
   return (
@@ -55,19 +71,23 @@ const Products = () => {
             </Button>
           </form>
 
-          <Select onValueChange={(value) => setSort(value)}>
-            <SelectTrigger className="w-[180px] mb-1">
-              <SelectValue placeholder="Price" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectLabel>Price</SelectLabel>
-                <SelectItem value="low to high">Low to high</SelectItem>
-                <SelectItem value="high to low">High to low</SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select>
         </div>
+      </div>
+      <div className="flex gap-4 ml-6">
+        <Select onValueChange={(value) => setSort(value)}>
+          <SelectTrigger className="w-[180px] mb-1">
+            <SelectValue placeholder="Price" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Price</SelectLabel>
+              <SelectItem value="low to high">Low to high</SelectItem>
+              <SelectItem value="high to low">High to low</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+        <RangeSlider priceRange={priceRange} setPriceRange={debouncedSetPriceRange} />
+        <Button onClick={resetFilters}>Reset Filters</Button>
       </div>
 
       <div className="mt-10 mb-28 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-items-center gap-y-5 2xl:gap-2 2xl:gap-y-8">
@@ -75,7 +95,7 @@ const Products = () => {
           <ProductCard key={item?._id} item={item} />
         ))}
       </div>
-    </div>
+    </div >
   )
 }
 
