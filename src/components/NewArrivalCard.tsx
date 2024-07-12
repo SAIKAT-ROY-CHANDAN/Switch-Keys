@@ -1,6 +1,7 @@
 import { TProducts } from "@/types";
 import { CardBody, CardContainer, CardItem } from "./ui/3d-card"
 import { Link } from "react-router-dom";
+import StarRating from "./shared/StarRating";
 
 interface NewArrivalCardProps {
     item: TProducts;
@@ -34,12 +35,38 @@ const NewArrivalCard = ({ item }: NewArrivalCardProps) => {
                 >
                     {item?.desc}
                 </CardItem>
-                <div className="flex justify-between items-center mt-10">
+                <div className="flex items-center justify-between">
+                    <CardItem
+                        translateZ="60"
+                        className="text-sm mt-2 text-neutral-600 dark:text-white"
+                    >
+                        <img src={item?.brandImg} className="size-6" alt="" />
+                    </CardItem>
+                    <CardItem
+                        translateZ="60"
+                        className="text-xs font-medium mt-2 text-neutral-600 dark:text-white uppercase"
+                    >
+                        {item?.brand}
+                    </CardItem>
+                </div>
+                <CardItem
+                    translateZ="60"
+                    className="text-xs font-medium mt-2 text-neutral-600 dark:text-white"
+                >$ {item?.price}</CardItem>
+                <CardItem
+                    translateZ="60"
+                    className="text-xs font-medium mt-2 text-neutral-600 dark:text-white"
+                >
+                    <h6 className={`${item?.inStock ? 'text-green-600' : 'text-red-600'} font-medium text-md inline-flex gap-x-2 items-center`}>{item?.inStock ? "In Stock" : "Out of Stock"}
+                        {item?.inStock && <span className="font-medium text-lg text-black text-xs">/ {item?.quantity}</span>}
+                    </h6>
+                </CardItem>
+                <div className="flex justify-between items-center mt-5">
                     <CardItem
                         translateZ={20}
                         className="rounded-xl text-xs font-normal dark:text-white"
                     >
-                        ⭐⭐⭐⭐⭐
+                        <StarRating rating={item?.rating} />
                     </CardItem>
                     <CardItem
                         translateZ={20}

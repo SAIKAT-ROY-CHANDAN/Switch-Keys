@@ -5,18 +5,23 @@ export type CounterState = {
 }
 
 const initialState: CounterState = {
-    value: 0,
+    value: 1,
 };
 
 const quantitySlice = createSlice({
     name: 'quantity',
     initialState,
     reducers: {
-        increment: (state) => {
-            state.value += 1
+        increment: (state, action) => {
+            const maxQuantity = action.payload;
+            if(state.value < maxQuantity){
+                state.value += 1
+            }
         },
         decrement: (state) => {
-            state.value -= 1
+            if (state.value > 0) {
+                state.value -= 1
+            }
         }
     }
 })
