@@ -7,7 +7,6 @@ export const baseApi = createApi({
     endpoints: (builder) => ({
         getProducts: builder.query({
             query: ({ sort, search, minPrice, maxPrice }) => {
-                console.log({ sort, search, minPrice, maxPrice });
                 return {
                     url: '/product',
                     params: { sort, search, minPrice, maxPrice }
@@ -23,11 +22,14 @@ export const baseApi = createApi({
             }, providesTags: ['products']
         }),
         postProduct: builder.mutation({
-            query: (data) => ({
-                url: '/cart',
-                method: "POST",
-                body: data,
-            }),
+            query: (data) => {
+                console.log(data, "Base Api");
+                return {
+                    url: '/cart',
+                    method: "POST",
+                    body: data,
+                }
+            },
             invalidatesTags: ['products']
         })
     })

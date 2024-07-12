@@ -57,7 +57,7 @@ const NewArrivalCard = ({ item }: NewArrivalCardProps) => {
                     className="text-xs font-medium mt-2 text-neutral-600 dark:text-white"
                 >
                     <h6 className={`${item?.inStock ? 'text-green-600' : 'text-red-600'} font-medium text-md inline-flex gap-x-2 items-center`}>{item?.inStock ? "In Stock" : "Out of Stock"}
-                        {item?.inStock && <span className="font-medium text-lg text-black text-xs">/ {item?.quantity}</span>}
+                        {item?.inStock && <span className="font-medium text-black text-xs">/ {item?.quantity}</span>}
                     </h6>
                 </CardItem>
                 <div className="flex justify-between items-center mt-5">

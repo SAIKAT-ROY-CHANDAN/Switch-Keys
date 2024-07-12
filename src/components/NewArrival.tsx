@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 
 const NewArrival = () => {
-
   const { data } = useGetProductsQuery({})
 
   return (
@@ -18,14 +17,11 @@ const NewArrival = () => {
         {data?.data.slice(0, 8).map((item: TProducts) => (
           <NewArrivalCard key={item._id} item={item} />
         ))}
-        {/* {Array.from({ length: 4 }).map((_, index) => (
-          <NewArrivalCard key={index} />
-        ))} */}
+
       </div>
       <div className="flex justify-center mt-5">
         <button className="p-[2px] relative">
           <div className="absolute inset-0 bg-black/80 rounded-lg" />
-          {/* <div className="absolute inset-0 bg-gradient-to-r from-[#fda4af] via-[#fb7185] to-[#f43f5e] rounded-lg" /> */}
           <div className="px-6 py-2 bg-white rounded-[6px] relative group transition duration-200 text-black/80 hover:bg-transparent hover:text-white font-medium">
             <Link to='/products'>See more</Link>
           </div>
