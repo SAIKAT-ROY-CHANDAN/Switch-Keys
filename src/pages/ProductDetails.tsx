@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useParams } from "react-router-dom";
 import { useGetSingleProductsQuery, usePostProductMutation } from "@/redux/api/baseApi"
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -15,9 +16,7 @@ const ProductDetails = () => {
 
 
     const handleAddToCart = async () => {
-        console.log("it's being pressed");
         try {
-
             if (quantity < count) {
                 throw new Error('Quantity is insufficient')
             }
@@ -39,14 +38,10 @@ const ProductDetails = () => {
             if (res?.success) {
                 toast.success('Product added to cart successfully')
             }
-        } catch (error) {
+        } catch (error: any) {
             toast.error(error?.message || 'Failed to add product to cart')
-            // console.log(error);
         }
-
     }
-
-    console.log(inStock);
 
     return (
         <div className="mt-32">

@@ -2,10 +2,11 @@ import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 
 type StarRatingProps = {
     rating: number;
+    className?: string
 };
 
 
-const StarRating = ({ rating }: StarRatingProps) => {
+const StarRating = ({ rating, className }: StarRatingProps) => {
 
     const fullStars = Math.floor(rating);
     const halfStars = rating % 1 >= 0.5 ? 1 : 0;
@@ -20,7 +21,7 @@ const StarRating = ({ rating }: StarRatingProps) => {
             {Array.from({ length: emptyStars }, (_, index) => (
                 <FaRegStar key={`empty-${index}`} color="gold" />
             ))}
-            <span className='font-medium text-md' style={{ marginLeft: '8px' }}>{rating?.toFixed(1)}</span>
+            <span className={`font-medium ${className || "text-md"}`} style={{ marginLeft: '8px' }}>{rating?.toFixed(1)}</span>
         </div>
     )
 }

@@ -1,16 +1,50 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { TProducts } from "@/types";
+import StarRating from "./shared/StarRating";
+import { useGetProductsQuery, usePostProductMutation } from "@/redux/api/baseApi";
+import { toast } from "sonner";
 
 interface NewArrivalCardProps {
     item: TProducts;
 }
 
 const ProductCard = ({ item }: NewArrivalCardProps) => {
+    const { data } = useGetProductsQuery({})
+    const { image, title, price, quantity, rating, desc, brand, brandImg, _id } = data?.data || {};
+    const [postProduct] = usePostProductMutation();
+
+    const handleAddToCart = async () => {
+        try {
+            const productData = {
+                productId: _id,
+                title,
+                image,
+                brand,
+                brandImg,
+                quantity,
+                price,
+                rating,
+                desc,
+                orderCount: 1
+            }
+
+            const res = await postProduct(productData).unwrap();
+            if (res?.success) {
+                toast.success('Product added to cart successfully')
+            }
+        } catch (error: any) {
+            toast.error(error?.message || 'Failed to add product to cart')
+        }
+
+    }
+
+
     return (
         <div className="group">
             <div className="bg-[#545455] border-b-transparent rounded-lg rounded-b-none border h-[210px] w-[288px]">
                 <img className="object-cover h-full object-center rounded-t-lg group-hover:scale-[101%] duration-200 " src={item?.image} alt="" />
             </div>
-            <div className="px-4 py-3 shadow-md w-[286px] bg-[#F9FAFB] group-hover:bg-[#f2f2f2] group-hover:scale-[101%] rounded-t-none rounded-lg">
+            <div className="px-4 py-3 shadow-md w-[286px] bg-[#F9FAFB] group-hover:bg-[#f2f2f2] group-hover:scale-[101%] rounded-t-none rounded-lg flex flex-col gap-y-2">
                 <div className="flex gap-x-7 justify-between">
                     <h2 className="uppercase font-semibold text-md">{item?.title}</h2>
                     <button>
@@ -20,14 +54,14 @@ const ProductCard = ({ item }: NewArrivalCardProps) => {
                     </button>
                 </div>
                 <div className="flex justify-between flex-row-reverse">
-                    <img className="size-5" src={item?.brandImg} alt="" />
+                    <img className="size-4" src={item?.brandImg} alt="" />
                     <h4 className="text-xs">{item?.quantity}</h4>
-                 </div>
+                </div>
                 <div className="flex justify-between">
                     <h4 className="text-xs">{item?.price} $</h4>
-                    <h6 className="text-xs">{item?.rating}</h6>
+                    <StarRating className="text-xs" rating={item?.rating} />
                 </div>
-                <p className="line-clamp-2 mt-2 text-gray-600/95 text-xs">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere, dolor id veritatis alias quis neque!</p>
+                <p className="line-clamp-2 mt-2 text-gray-600/95 text-xs">{item?.desc}</p>
             </div>
         </div>
     )
