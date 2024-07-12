@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const baseApi = createApi({
     reducerPath: 'baseApi',
     baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api" }),
-    tagTypes: ['products'],
+    tagTypes: ['products', 'carts'],
     endpoints: (builder) => ({
         getProducts: builder.query({
             query: ({ sort, search, minPrice, maxPrice }) => {
@@ -31,8 +31,30 @@ export const baseApi = createApi({
                 }
             },
             invalidatesTags: ['products']
+        }),
+        getCartItems: builder.query({
+            query: () => {
+                return {
+                    url: '/cart',
+                    method: "GET"
+                }
+            },
+            providesTags: ['carts']
+        }),
+        deleteCartItem: builder.mutation({
+            query: (id) => ({
+                url: `/cart/delete/${id}`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: ['carts']
         })
     })
 })
 
-export const { useGetProductsQuery, useGetSingleProductsQuery, usePostProductMutation } = baseApi
+export const {
+    useGetProductsQuery,
+    useGetSingleProductsQuery,
+    usePostProductMutation,
+    useGetCartItemsQuery,
+    useDeleteCartItemMutation
+} = baseApi
