@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { baseApi } from './api/baseApi'
 import { quantityReducer } from './features/quantityCounterSlice'
+import { totalPriceReducer } from './features/totalPriceSlice'
 // import { priceRangeReducer } from './features/priceRangeSlice'
 
 export const store = configureStore({
     reducer: {
         [baseApi.reducerPath]: baseApi.reducer,
         quantity: quantityReducer,
+        totalPrice : totalPriceReducer
         // priceRange: priceRangeReducer
     },
 
