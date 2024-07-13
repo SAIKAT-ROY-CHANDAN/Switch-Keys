@@ -10,17 +10,18 @@ const ProductDetails = () => {
     const { id } = useParams();
     const { data } = useGetSingleProductsQuery(id);
     const { image, title, price, quantity, rating, desc, brand, brandImg, _id, inStock } = data?.data || {};
-    const count = useAppSelector((state) => state.quantity.counters[_id] || 0);
+    const count = useAppSelector((state) => state.quantity.counters || 0);
+    console.log(count);
     const dispatch = useAppDispatch();
     const [postProduct] = usePostProductMutation();
 
 
     const handleIncrement = () => {
-        dispatch(increment({ productId: id, maxQuantity: quantity }));
+        dispatch(increment({ maxQuantity: quantity }));
     };
 
     const handleDecrement = () => {
-        dispatch(decrement(id));
+        dispatch(decrement());
     };
 
     const handleAddToCart = async () => {
