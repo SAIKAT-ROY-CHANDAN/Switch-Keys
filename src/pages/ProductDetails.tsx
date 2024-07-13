@@ -10,10 +10,18 @@ const ProductDetails = () => {
     const { id } = useParams();
     const { data } = useGetSingleProductsQuery(id);
     const { image, title, price, quantity, rating, desc, brand, brandImg, _id, inStock } = data?.data || {};
-    const count = useAppSelector((state) => state.quantity.value)
+    const count = useAppSelector((state) => state.quantity.counters[_id] || 0);
     const dispatch = useAppDispatch();
     const [postProduct] = usePostProductMutation();
 
+
+    const handleIncrement = () => {
+        dispatch(increment({ productId: id, maxQuantity: quantity }));
+    };
+
+    const handleDecrement = () => {
+        dispatch(decrement(id));
+    };
 
     const handleAddToCart = async () => {
         try {
@@ -58,13 +66,13 @@ const ProductDetails = () => {
                     </h6>
 
                     <div className="flex items-center border-2 w-[124px] border-black justify-around py-2 rounded-md">
-                        <button onClick={() => dispatch(decrement())}>
+                        <button onClick={handleDecrement}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 hover:scale-95 hover:text-gray-800 duration-150">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
                             </svg>
                         </button>
                         <p className="text-md px-4 font-medium border-2 border-y-0 border-black">{count}</p>
-                        <button onClick={() => dispatch(increment(quantity))}>
+                        <button onClick={handleIncrement}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 hover:scale-95 hover:text-gray-800 duration-150">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                             </svg>

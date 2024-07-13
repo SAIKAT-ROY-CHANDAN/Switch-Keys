@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
-interface Counter {
+export interface Counter {
     counter: number;
     quantity: number;
     price: number;
     orderCount: number;
 }
 
-interface CounterState {
+export interface CounterState {
     counters: Record<string, Counter>;
     totalPrice: number;
     totalQuantity: number;
