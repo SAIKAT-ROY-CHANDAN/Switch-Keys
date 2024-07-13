@@ -63,36 +63,36 @@ export const logos = [
 export const projectsData = [
   {
     id: 1,
-    name: 'syntaxUI',
-    description: 'Ready-to-use UI elements designed for rapid development.',
+    name: 'Switch Selection',
+    description: 'Personalized guidance to help customers choose the right mechanical switches for their typing or gaming needs.',
     link: 'https://syntaxui.com',
     image: 'https://ansubkhan.com/images/projects/syntaxUI.svg',
   },
   {
     id: 2,
-    name: 'Prettyfolio',
-    description: 'A curated collection of portfolios for inspiration.',
+    name: 'Build Your Board',
+    description: 'Customization options where customers can select keycaps, switches, and case colors to build their own unique mechanical keyboard.',
     link: 'https://prettyfolio.com',
     image: 'https://ansubkhan.com/images/projects/prettyfolio.png',
   },
   {
-    id: 2,
-    name: 'Enchant',
-    description: 'A vibrant theme for Visual Studio Code.',
+    id: 3,
+    name: 'Switch Reviews ',
+    description: 'Detailed reviews and comparisons of different mechanical switches to help customers make informed decisions.',
     link: 'https://enchant.ansubkhan.com',
     image: 'https://ansubkhan.com/images/projects/enchant.png',
   },
   {
-    id: 3,
-    name: 'Ansubkhan.com',
-    description: 'My personal website, blogs and newsletter.',
+    id: 4,
+    name: 'Keyboard Accessories',
+    description: ' A range of accessories such as wrist rests, keycap sets, and cables to complement and customize mechanical keyboards.',
     link: 'https://ansubkhan.com',
     image: 'https://ansubkhan.com/images/projects/portfolio.png',
   },
   {
-    id: 4,
-    name: 'Quote Vault',
-    description: 'Social media, but for sharing quotes.',
+    id: 5,
+    name: 'Technical Support',
+    description: 'Dedicated customer support for troubleshooting, maintenance tips, and technical advice related to mechanical keyboards.',
     link: 'https://quote-vault.vercel.app',
     image: 'https://ansubkhan.com/images/projects/quote-vault.png',
   },
@@ -102,7 +102,7 @@ export const testimonials = [
   {
     name: 'Ethan Pollack',
     description:
-      "I've been using SyntaxUI for a few months now and I'm really impressed with the results. The components are easy to use and the documentation is great.",
+      "Aurora Tactile from Switch is amazing! Great build quality and fantastic customer service. Highly recommend!",
     profession: 'Software Developer',
     image: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde',
   },
@@ -110,35 +110,35 @@ export const testimonials = [
     name: 'Aiko',
     profession: 'Design Engineer',
     description:
-      "SyntaxUI is a great tool for building user interfaces. It's easy to use and has a lot of features. I've been using it for a while now and I'm really happy with the results.",
+      "Love my Nebula RGB keyboard from Switch! Fast delivery and excellent performance for both work and gaming.",
     image: 'https://images.unsplash.com/photo-1601455763557-db1bea8a9a5a',
   },
   {
     name: 'Alena Zhukova',
     profession: 'Software Engineer',
     description:
-      "SyntaxUI is the perfect tool for building user interfaces. It's easy to use and has a lot of features. I've been using it for a while now and I'm really happy with the results. The components are easy to use and the documentation is great.",
+      "Lunar Silent keyboard is perfect for quiet yet satisfying typing. Switch's website and service are top-notch.",
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330',
   },
   {
     name: 'Lisa Kemp',
     profession: 'Frontend Developer',
     description:
-      "SyntaxUI is a great tool for building user interfaces. It's easy to use and has a lot of features. I've been using it for a while now and I'm really happy with the results. The components are easy to use and the documentation is great.",
+      "Solar Speed keyboard has improved my gaming. Fast response and great customization options. Thanks, Switch!",
     image: 'https://images.unsplash.com/photo-1569913486515-b74bf7751574',
   },
   {
     name: 'Saud',
     profession: 'Game Developer',
     description:
-      "SyntaxUI is a great tool for building user interfaces. It's easy to use and has a lot of features. I've been using it for a while now and I'm really happy with the results.",
+      "Celestial Clicky keyboard looks and performs great. The clicky switches are perfect for my style. Awesome product!",
     image: 'https://images.unsplash.com/photo-1645830166230-187caf791b90',
   },
   {
     name: 'Paula Smith',
     profession: 'UX Designer',
     description:
-      "SyntaxUI is a great tool for building user interfaces. It's easy to use and has a lot of features. I've been using it for a while now and I'm really happy with the results.",
+      "Eclipse Linear keyboard is smooth and durable. Fantastic shopping experience with Switch. Highly recommended!",
     image: 'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa',
   },
 ]

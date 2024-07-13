@@ -10,8 +10,7 @@ const Testimonials = () => {
         Why people love <span className="text-def">Switch</span>
       </h1>
       <p className="max-w-2xl text-center text-sm font-light text-gray-600 md:text-base dark:text-gray-400">
-        SyntaxUI is loved by the community and is used by many companies. It is
-        a great tool for rapid development and launching projects.
+      People love Switch for our high-quality, user-friendly mechanical keyboards, diverse selection, and outstanding customer support.
       </p>
       <div className="relative mt-12 flex h-full w-full flex-col items-center justify-center gap-x-10 gap-y-4 md:flex-row">
         {[0, 1, 2].map((colIndex) => (
