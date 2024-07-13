@@ -2,19 +2,14 @@
 import { TProducts } from "@/types";
 import StarRating from "./shared/StarRating";
 import { Link } from "react-router-dom";
-// import { usePostProductMutation } from "@/redux/api/baseApi";
-// import { toast } from "sonner";
 
 interface NewArrivalCardProps {
     item: TProducts;
 }
 
 const ProductCard = ({ item }: NewArrivalCardProps) => {
-    // const { data } = useGetProductsQuery({})
     const { title, quantity, desc, brandImg, price, rating, _id } = item;
     // const [postProduct] = usePostProductMutation();
-
-    console.log(item);
 
     // const handleAddToCart = async () => {
     //     try {

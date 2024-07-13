@@ -1,26 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export type CounterState = {
-    value: number;
-}
+    counters: {
+        [cartId: string]: number;
+    };
+};
 
 const initialState: CounterState = {
-    value: 1,
+    counters: {},
 };
+
 
 const quantitySlice = createSlice({
     name: 'quantity',
     initialState,
     reducers: {
         increment: (state, action) => {
-            const maxQuantity = action.payload;
-            if(state.value < maxQuantity){
-                state.value += 1
+            const { cartId, maxQuantity } = action.payload
+
+            if (!state.counters[cartId]) {
+                state.counters[cartId] = 1;
+            } else if (state.counters[cartId] < maxQuantity) {
+                state.counters[cartId] += 1;
             }
         },
-        decrement: (state) => {
-            if (state.value > 0) {
-                state.value -= 1
+        decrement: (state, action) => {
+
+            const cartId = action.payload;
+            if (state.counters[cartId] > 0) {
+                state.counters[cartId] -= 1;
             }
         }
     }

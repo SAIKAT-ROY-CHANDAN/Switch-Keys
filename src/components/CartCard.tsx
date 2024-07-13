@@ -1,4 +1,6 @@
 import { useDeleteCartItemMutation } from "@/redux/api/baseApi";
+import { decrement, increment } from "@/redux/features/quantityCounterSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { TAddCart } from "@/types"
 import { toast } from "sonner";
 
@@ -9,6 +11,8 @@ type CartCardProps = {
 
 const CartCard = ({ cart }: CartCardProps) => {
     const [deleteCartItem] = useDeleteCartItemMutation()
+    const dispatch = useAppDispatch();
+    const count = useAppSelector((state) => state.quantity.counters[cart._id] || 0);
 
     const handleDelete = async (id: string) => {
         const toastId = toast.loading('Deleting')
@@ -24,6 +28,14 @@ const CartCard = ({ cart }: CartCardProps) => {
         }
     };
 
+    const handleIncrement = () => {
+        dispatch(increment({cartId: cart._id , maxQuantity:cart.quantity}))   
+    }
+
+    const handleDecrement = () => {
+        dispatch(decrement(cart._id))   
+    }
+
     return (
         <div className="py-4 flex justify-between items-center gap-x-6 xl:w-10/12 mx-auto px-2">
             <div className="bg-gray-200/50 border rounded-xl w-20 p-1 xl:py-2 flex items-center justify-center ml-3">
@@ -36,12 +48,21 @@ const CartCard = ({ cart }: CartCardProps) => {
                 <h6 className={`${cart?.inStock ? 'text-green-600' : 'text-red-600'} font-medium text-md inline-flex gap-x-2 items-center`}>{cart?.inStock ? "In Stock" : "Out of Stock"}
                     {cart?.inStock && <span className="font-medium text-black text-xs">/ {cart?.quantity}</span>}
                 </h6>
+                <h2 className="text-xs mt-1">${cart.price}</h2>
             </div>
             <div className="flex flex-col xl:flex-row xl:gap-x-4 gap-y-4 items-center" >
-                <div className="flex gap-4 items-center justify-center p-1 border rounded-md">
-                    <button>+</button>
-                    <p>1</p>
-                    <button>-</button>
+                <div className="flex items-center border-2 w-[124px] border-black justify-around py-2 rounded-md">
+                    <button onClick={handleDecrement}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 hover:scale-95 hover:text-gray-800 duration-150">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
+                        </svg>
+                    </button>
+                    <p className="text-md px-4 font-medium border-2 border-y-0 border-black">{count}</p>
+                    <button onClick={handleIncrement}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 hover:scale-95 hover:text-gray-800 duration-150">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                    </button>
                 </div>
 
                 <div className="cursor-pointer" onClick={() => handleDelete(cart?._id)}>
