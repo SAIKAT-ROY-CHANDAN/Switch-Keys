@@ -67,9 +67,9 @@ const Header = () => {
           </svg>
         </Link>
 
-        <button className="hidden hover:text-def hover:scale-105 duration-150 lg:flex">
+        <Link to="/dashboard" className="hidden hover:text-def hover:scale-105 duration-150 lg:flex">
           Dashboard
-        </button>
+        </Link>
 
         <Button
           className="ml-auto lg:hidden"
