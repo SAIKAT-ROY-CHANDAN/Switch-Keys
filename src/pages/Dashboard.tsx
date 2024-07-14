@@ -1,5 +1,5 @@
-import { Trash } from "@/components/svgs"
-import { Button } from "@/components/ui/button"
+import AddModal from "@/components/AddModal"
+import AlertConfirmationDialog from "@/components/AlertConfirmationDialog"
 import {
     Table,
     TableBody,
@@ -13,11 +13,14 @@ import { useGetProductsQuery } from "@/redux/api/baseApi"
 import { TProducts } from "@/types"
 
 const Dashboard = () => {
-
     const { data } = useGetProductsQuery({})
+ ;
 
     return (
-        <div className="mt-36 w-3/4 mx-auto bg-slate-100/30 rounded-lg p-5">
+        <div className="w-3/4 mt-36 mx-auto bg-slate-100/30 rounded-lg p-5">
+            <div className="w-full flex justify-end items-end">
+                <AddModal />
+            </div>
             <Table>
                 <TableHeader>
                     <TableRow>
@@ -45,9 +48,7 @@ const Dashboard = () => {
                                     <button>
                                         <UpdateModal item={item} />
                                     </button>
-                                    <Button variant='outline'>
-                                        <Trash className="text-def" />
-                                    </Button>
+                                    <AlertConfirmationDialog id={item._id} />
                                 </div>
                             </TableCell>
                         </TableRow>

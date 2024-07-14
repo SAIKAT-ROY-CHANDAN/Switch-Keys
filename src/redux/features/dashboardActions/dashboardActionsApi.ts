@@ -13,7 +13,31 @@ const dashboardActionsApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ['products'],
     }),
+
+    postNewProducts: builder.mutation({
+      query: ({data}) => {
+        console.log(data);
+        return {
+          url: '/product',
+          method: "POST",
+          body: data,
+        }
+      },
+      invalidatesTags: ['products'],
+    }),
+
+    
+    deleteNewProducts: builder.mutation({
+      query: ({id}) => {
+        console.log({id});
+        return {
+          url: `/product/${id}`,
+          method: "DELETE",
+        }
+      },
+      invalidatesTags: ['products'],
+    })
   }),
 });
 
-export const { useUpdateProductMutation } = dashboardActionsApi
+export const { useUpdateProductMutation, usePostNewProductsMutation, useDeleteNewProductsMutation } = dashboardActionsApi

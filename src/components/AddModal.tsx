@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useForm } from "react-hook-form";
+import { Add } from "../components/svgs/index";
 import {
     Modal,
     ModalBody,
@@ -7,35 +8,24 @@ import {
     ModalFooter,
     ModalTrigger,
 } from "../components/ui/animated-modal";
-import { Edit } from "./svgs";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
-import { useUpdateProductMutation } from "@/redux/features/dashboardActions/dashboardActionsApi";
+import { usePostNewProductsMutation } from "@/redux/features/dashboardActions/dashboardActionsApi";
 import { toast } from "sonner";
 
-
-const UpdateModal = ({ item }: any) => {
-    const { register, handleSubmit } = useForm({
-        defaultValues: {
-            title: item.title,
-            description: item.desc,
-            price: item.price,
-            quantity: item.quantity,
-            brand: item.brand,
-            link: item.image
-        }
-    });
-
-    const [updateProduct] = useUpdateProductMutation()
+const AddModal = () => {
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({});
+    const [postNewProducts] = usePostNewProductsMutation()
 
     const onSubmit = async (data: any) => {
         data.price = Number(data.price);
         data.quantity = Number(data.quantity);
-        console.log(data);
+        console.log({data});
+
         try {
-            const res = await updateProduct({ id: item._id, data }).unwrap();
+            const res = await postNewProducts({data}).unwrap();
             console.log(res);
             if (res?.success) {
                 toast.success('Product Updated Successfully')
@@ -44,17 +34,27 @@ const UpdateModal = ({ item }: any) => {
             console.log(error);
             toast.error(error?.message || 'Failed to update Product')
         }
+
+        reset()
     };
+
+    const getErrorMessage = (error: any) => {
+        if (error) {
+            return error.message;
+        }
+        return null;
+    };
+
 
     return (
         <div className="flex items-center justify-center">
             <Modal>
                 <ModalTrigger className="bg-black dark:bg-white dark:text-black text-white flex justify-center group/modal-btn">
                     <span className="group-hover/modal-btn:translate-x-40 text-center transition duration-500">
-                        <Edit />
+                        <Add />
                     </span>
                     <div className="-translate-x-40 group-hover/modal-btn:translate-x-0 flex items-center justify-center absolute inset-0 transition duration-500 text-white z-20">
-                        Edit
+                        Add
                     </div>
                 </ModalTrigger>
                 <ModalBody>
@@ -68,13 +68,19 @@ const UpdateModal = ({ item }: any) => {
                                     type="text"
                                     {...register('title', { required: 'Name is required' })}
                                 />
+                                {errors.title && (
+                                    <p className="text-def text-xs">{getErrorMessage(errors.title)}</p>
+                                )}
                             </div>
                             <div className="mb-4">
                                 <Label htmlFor="name">Description</Label>
                                 <Textarea
                                     placeholder="Type your message here."
-                                    {...register('description', { required: 'Description is required' })}
+                                    {...register('desc', { required: 'Description is required' })}
                                 />
+                                {errors.desc && (
+                                    <p className="text-def text-xs">{getErrorMessage(errors.desc)}</p>
+                                )}
                             </div>
                             <div className="flex flex-col md:flex-row space-y-2 justify-center md:space-y-0 md:space-x-2 mb-4">
                                 <div>
@@ -85,10 +91,21 @@ const UpdateModal = ({ item }: any) => {
                                         type="text"
                                         {...register('price', { required: 'Price is required' })}
                                     />
+                                    {errors.price && (
+                                        <p className="text-def text-xs">{getErrorMessage(errors.price)}</p>
+                                    )}
                                 </div>
                                 <div>
                                     <Label htmlFor="quantity">Quantity</Label>
-                                    <Input id="quantity" placeholder="" type="text"  {...register('quantity', { required: 'Quantity is required' })} />
+                                    <Input
+                                        id="quantity"
+                                        placeholder=""
+                                        type="text"
+                                        {...register('quantity', { required: 'Quantity is required' })}
+                                    />
+                                    {errors.quantity && (
+                                        <p className="text-def text-xs">{getErrorMessage(errors.quantity)}</p>
+                                    )}
                                 </div>
                                 <div>
                                     <Label htmlFor="brand">Brand</Label>
@@ -98,21 +115,39 @@ const UpdateModal = ({ item }: any) => {
                                         type="text"
                                         {...register('brand', { required: 'Brand is required' })}
                                     />
+                                    {errors.brand && (
+                                        <p className="text-def text-xs">{getErrorMessage(errors.brand)}</p>
+                                    )}
                                 </div>
                             </div>
                             <div className="mb-4">
-                                <Label htmlFor="link">Link</Label>
+                                <Label htmlFor="image">Image Link</Label>
                                 <Input
-                                    id="link"
+                                    id="image"
                                     placeholder=""
                                     type="text"
-                                    {...register('link', { required: 'Link is required' })}
+                                    {...register('image', { required: 'Link is required' })}
                                 />
+                                {errors.link && (
+                                    <p className="text-def text-xs">{getErrorMessage(errors.link)}</p>
+                                )}
+                            </div>
+                            <div className="mb-4">
+                                <Label htmlFor="brandImg">Brand Image</Label>
+                                <Input
+                                    id="brandImg"
+                                    placeholder=""
+                                    type="text"
+                                    {...register('brandImg', { required: 'Brand img is required' })}
+                                />
+                                {errors.brandImg && (
+                                    <p className="text-def text-xs">{getErrorMessage(errors.brandImg)}</p>
+                                )}
                             </div>
                         </ModalContent>
                         <ModalFooter className="gap-4">
                             <Button type='submit' className="bg-black text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded-md border border-black w-28">
-                                Update
+                                Add <Add className="ml-2" />
                             </Button>
                         </ModalFooter>
                     </form>
@@ -122,4 +157,4 @@ const UpdateModal = ({ item }: any) => {
     )
 }
 
-export default UpdateModal
+export default AddModal
