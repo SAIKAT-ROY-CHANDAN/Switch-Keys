@@ -2,10 +2,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
 export interface Counter {
+    cartId: string;
     counter: number;
     quantity: number;
     price: number;
     orderCount: number;
+    productId: string;
 }
 
 export interface CounterState {
@@ -24,21 +26,37 @@ const totalPriceSlice = createSlice({
     name: 'counter',
     initialState,
     reducers: {
-        initializeCartItem: (state, action: PayloadAction<{ id: string; quantity: number; price: number; orderCount: number }>) => {
-            const { id, quantity, price, orderCount } = action.payload;
+        initializeCartItem: (state, action: PayloadAction<{ id: string; quantity: number; price: number; orderCount: number, productId: string }>) => {
+            const { id, quantity, price, orderCount, productId } = action.payload;
+            console.log(action.payload);
             if (!state.counters[id]) {
-                state.counters[id] = { counter: quantity - orderCount, quantity, price, orderCount };
+                state.counters[id] = {
+                    cartId: id,
+                    counter: quantity - orderCount,
+                    quantity,
+                    price,
+                    orderCount,
+                    productId,
+                };
                 state.totalPrice += price * orderCount;
                 state.totalQuantity += orderCount;
+                state.counters[id].productId = productId
             }
         },
 
 
-        increasePriceCounter: (state, action: PayloadAction<{ id: string; quantity: number; price: number; orderCount: number }>) => {
-            const { id, quantity, price, orderCount } = action.payload;
+        increasePriceCounter: (state, action: PayloadAction<{ id: string; quantity: number; price: number; orderCount: number, productId: string }>) => {
+            const { id, quantity, price, orderCount, productId } = action.payload;
 
             if (!state.counters[id]) {
-                state.counters[id] = { counter: quantity - orderCount, quantity, price, orderCount };
+                state.counters[id] = {
+                    cartId: id,
+                    counter: quantity - orderCount,
+                    quantity,
+                    price,
+                    orderCount,
+                    productId
+                };
             }
 
             if (state.counters[id].orderCount < state.counters[id].quantity) {
@@ -46,12 +64,13 @@ const totalPriceSlice = createSlice({
                 state.counters[id].counter -= 1;
                 state.totalPrice += price;
                 state.totalQuantity += 1;
+                state.counters[id].productId = productId
             } else {
                 console.log('Cannot order more than available quantity');
             }
         },
 
-        decreasePriceCounter: (state, action: PayloadAction<{ id: string; quantity: number; price: number; orderCount: number }>) => {
+        decreasePriceCounter: (state, action: PayloadAction<{ id: string; quantity: number; price: number; orderCount: number, productId: string }>) => {
             const { id, price } = action.payload;
 
             if (state.counters[id] && state.counters[id].orderCount > 0) {
@@ -59,6 +78,7 @@ const totalPriceSlice = createSlice({
                 state.counters[id].counter += 1;
                 state.totalPrice -= price;
                 state.totalQuantity -= 1;
+                // state.counters[id].productId = productId
             } else {
                 console.log('Cannot decrease order count below zero');
             }

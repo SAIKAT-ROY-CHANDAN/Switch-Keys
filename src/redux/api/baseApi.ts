@@ -23,7 +23,6 @@ export const baseApi = createApi({
         }),
         postProduct: builder.mutation({
             query: (data) => {
-                console.log(data, "Base Api");
                 return {
                     url: '/cart',
                     method: "POST",
@@ -47,6 +46,17 @@ export const baseApi = createApi({
                 method: 'DELETE'
             }),
             invalidatesTags: ['carts']
+        }),
+
+        postOrder: builder.mutation({
+            query: (data) => {
+                console.log(data);
+                return {
+                    url: '/order/delivery',
+                    method: "POST",
+                    body: data,
+                }
+            },
         })
     })
 })
@@ -56,5 +66,6 @@ export const {
     useGetSingleProductsQuery,
     usePostProductMutation,
     useGetCartItemsQuery,
-    useDeleteCartItemMutation
+    useDeleteCartItemMutation,
+    usePostOrderMutation
 } = baseApi

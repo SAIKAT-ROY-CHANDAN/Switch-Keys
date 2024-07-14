@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useParams } from "react-router-dom";
 import { useGetSingleProductsQuery, usePostProductMutation } from "@/redux/api/baseApi"
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { decrement, increment } from "@/redux/features/quantityCounterSlice";
+import { useAppSelector } from "@/redux/hooks";
+// import { decrement, increment } from "@/redux/features/quantityCounterSlice";
 import { toast } from "sonner";
 import StarRating from "@/components/shared/StarRating";
 
@@ -12,17 +12,17 @@ const ProductDetails = () => {
     const { image, title, price, quantity, rating, desc, brand, brandImg, _id, inStock } = data?.data || {};
     const count = useAppSelector((state) => state.quantity.counters || 0);
     console.log(count);
-    const dispatch = useAppDispatch();
+    // const dispatch = useAppDispatch();
     const [postProduct] = usePostProductMutation();
 
 
-    const handleIncrement = () => {
-        dispatch(increment({ maxQuantity: quantity }));
-    };
+    // const handleIncrement = () => {
+    //     dispatch(increment({ maxQuantity: quantity }));
+    // };
 
-    const handleDecrement = () => {
-        dispatch(decrement());
-    };
+    // const handleDecrement = () => {
+    //     dispatch(decrement());
+    // };
 
     const handleAddToCart = async () => {
         try {
@@ -66,7 +66,7 @@ const ProductDetails = () => {
                         {inStock && <span className="font-medium text-lg text-black">/ {quantity - count}</span>}
                     </h6>
 
-                    <div className="flex items-center border-2 w-[124px] border-black justify-around py-2 rounded-md">
+                    {/* <div className="flex items-center border-2 w-[124px] border-black justify-around py-2 rounded-md">
                         <button onClick={handleDecrement}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 hover:scale-95 hover:text-gray-800 duration-150">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
@@ -78,7 +78,7 @@ const ProductDetails = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                             </svg>
                         </button>
-                    </div>
+                    </div> */}
                     <StarRating rating={rating} />
                     <button
                         onClick={handleAddToCart}

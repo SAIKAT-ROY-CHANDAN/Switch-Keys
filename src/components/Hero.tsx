@@ -1,23 +1,59 @@
-// import hero from "../assets/images/test-hero.jpg"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel"
-// import { Card, CardContent } from "@/components/ui/card"
 import keyboard from "../assets/images/keyboard-8.jpg"
+import { Card, CardContent } from "./ui/card"
+import Autoplay from "embla-carousel-autoplay"
+ 
 
 const Hero = () => {
+
+  const sliderData = [
+    {
+      id: 1,
+      image: keyboard,
+    },
+    {
+      id: 2,
+      image: keyboard,
+    },
+    {
+      id: 3,
+      image: keyboard,
+    },
+  ];
+
   return (
-    <Carousel className="w-full max-w-screen-2xl mt-28 mx-auto">
-      <CarouselContent className="w-full h-2/4">
-        {Array.from({ length: 5 }).map((_, index) => (
-          <CarouselItem className="object-cover object-center" key={index}>
-            <div className="p-1">
-                  <img className="" src={keyboard} alt="" />
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+    <div className="relative w-full mt-[86px]">
+      <Carousel
+        className=" overflow-hidden rounded-lg shadow-lg"
+        plugins={[
+          Autoplay({
+            delay: 6000,
+          }),
+        ]}
+      >
+        <CarouselContent className="flex">
+          {sliderData.map((slider) => (
+            <CarouselItem key={slider.id} className="min-w-full">
+              <Card className="bg-transparent">
+                <CardContent className="flex items-center justify-center h-[800px] p-0">
+                  <img
+                    src={slider?.image}
+                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                    alt=""
+                  />
+                </CardContent>
+              </Card>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full cursor-pointer hover:bg-opacity-75 transition-opacity duration-300">
+          &#9664;
+        </CarouselPrevious>
+        <CarouselNext className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full cursor-pointer hover:bg-opacity-75 transition-opacity duration-300">
+          &#9654;
+        </CarouselNext>
+      </Carousel>
+    </div>
   )
 }
 
