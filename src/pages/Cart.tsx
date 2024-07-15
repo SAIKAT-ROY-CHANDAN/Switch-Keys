@@ -3,12 +3,28 @@ import { Button } from "@/components/ui/button"
 import { useGetCartItemsQuery } from "@/redux/api/baseApi"
 import { useAppSelector } from "@/redux/hooks"
 import { TAddCart } from "@/types"
+import { useEffect } from "react"
 import { Link } from "react-router-dom"
 
 const Cart = () => {
     const { data } = useGetCartItemsQuery({})
     const totalPrice = useAppSelector((state) => state.totalPrice.totalPrice);
     const subTotal = useAppSelector((state) => state.totalPrice.totalQuantity);
+
+    useEffect(() => {
+        const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+            if (data?.data.length > 0) {
+                event.preventDefault();
+                event.returnValue = 'You have items in your cart. Are you sure you want to leave?';
+            }
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, [data]);
 
     return (
         <div className=" bg-[#f0f0f0] h-screen">
@@ -28,7 +44,7 @@ const Cart = () => {
                         <p className="font-bold text-xl">Total Price: ${totalPrice.toFixed(2)}</p>
 
                         <Button variant='default'>
-                            <Link to={`/checkout`}  className="w-2/5 flex gap-x-2 items-center justify-center">
+                            <Link to={`/checkout`} className="w-2/5 flex gap-x-2 items-center justify-center">
                                 <p>
                                     Checkout
                                 </p>
