@@ -8,7 +8,7 @@ import Testimonials from "../components/Testimonials"
 
 const Home = () => {
   return (
-    <div className="">
+    <>
       <Hero />
       <Service />
       <NewArrival />
@@ -16,7 +16,7 @@ const Home = () => {
       <Grid />
       <Brands />
       <Testimonials />
-    </div>
+    </>
   )
 }
 

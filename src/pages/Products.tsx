@@ -1,6 +1,8 @@
 import ProductCard from "@/components/ProductCard"
+import ProductPagination from "@/components/ProductPagination"
 import RangeSlider from "@/components/RangeSlider"
 import LoadingAnimation from "@/components/shared/LoadingAnimation"
+import { SearchIcon } from "@/components/svgs"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -10,6 +12,8 @@ import debounce from "lodash.debounce"
 import { FormEvent, useEffect, useState } from "react"
 
 const Products = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState('')
   const [debouncedSearch, setDebouncedSearch] = useState('');
@@ -18,7 +22,9 @@ const Products = () => {
     sort,
     search: debouncedSearch,
     minPrice: priceRange[0],
-    maxPrice: priceRange[1]
+    maxPrice: priceRange[1],
+    page: currentPage,
+    limit: itemsPerPage,
   });
 
   const debouncedSetPriceRange = debounce((values: number[]) => {
@@ -47,9 +53,17 @@ const Products = () => {
     setPriceRange([0, 1000]);
   };
 
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const totalPages = data?.pagination?.totalPages || 1;
+
+
   if (isLoading) {
     return <LoadingAnimation />
   }
+
 
   return (
     <div className="md:mx-20 xl:mx-10 2xl:mx-20 mt-28">
@@ -65,9 +79,7 @@ const Products = () => {
             />
             <Button className="flex gap-x-1" type="submit">
               <span>Search</span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 20" strokeWidth={1.5} stroke="currentColor" className="size-4">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-              </svg>
+              <SearchIcon />
             </Button>
           </form>
 
@@ -90,11 +102,12 @@ const Products = () => {
         <Button onClick={resetFilters}>Reset Filters</Button>
       </div>
 
-      <div className="mt-10 mb-28 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-items-center gap-y-5 2xl:gap-2 2xl:gap-y-8">
+      <div className="mt-10 mb-12 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-items-center gap-y-5 2xl:gap-2 2xl:gap-y-8">
         {data?.data?.map((item: TProducts) => (
           <ProductCard key={item?._id} item={item} />
         ))}
       </div>
+      <ProductPagination handlePageChange={handlePageChange} totalPages={totalPages} currentPage={currentPage} />
     </div >
   )
 }

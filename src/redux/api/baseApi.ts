@@ -6,10 +6,10 @@ export const baseApi = createApi({
     tagTypes: ['products', 'carts'],
     endpoints: (builder) => ({
         getProducts: builder.query({
-            query: ({ sort, search, minPrice, maxPrice }) => {
+            query: ({ sort, search, minPrice, maxPrice, page, limit }) => {
                 return {
                     url: '/product',
-                    params: { sort, search, minPrice, maxPrice }
+                    params: { sort, search, minPrice, maxPrice, page, limit }
                 }
             },
             providesTags: ['products']
