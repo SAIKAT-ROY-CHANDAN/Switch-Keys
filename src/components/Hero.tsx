@@ -1,58 +1,19 @@
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel"
-import keyboard from "../assets/images/keyboard-8.jpg"
-import { Card, CardContent } from "./ui/card"
-import Autoplay from "embla-carousel-autoplay"
- 
+import heroVid from "../assets/videos/herovideo.mp4"
 
 const Hero = () => {
 
-  const sliderData = [
-    {
-      id: 1,
-      image: keyboard,
-    },
-    {
-      id: 2,
-      image: keyboard,
-    },
-    {
-      id: 3,
-      image: keyboard,
-    },
-  ];
-
   return (
-    <div className="relative w-full mt-[86px]">
-      <Carousel
-        className=" overflow-hidden rounded-lg shadow-lg"
-        plugins={[
-          Autoplay({
-            delay: 6000,
-          }),
-        ]}
-      >
-        <CarouselContent className="flex">
-          {sliderData.map((slider) => (
-            <CarouselItem key={slider.id} className="min-w-full">
-              <Card className="bg-transparent">
-                <CardContent className="flex items-center justify-center h-[800px] p-0">
-                  <img
-                    src={slider?.image}
-                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                    alt=""
-                  />
-                </CardContent>
-              </Card>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full cursor-pointer hover:bg-opacity-75 transition-opacity duration-300">
-          &#9664;
-        </CarouselPrevious>
-        <CarouselNext className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full cursor-pointer hover:bg-opacity-75 transition-opacity duration-300">
-          &#9654;
-        </CarouselNext>
-      </Carousel>
+    <div className="w-full mt-[108px] 2xl:mt-[88px]">
+      <video className="w-full relative top-0 h-[80vh] object-cover" autoPlay loop muted>
+        <source src={heroVid} type="video/mp4" />
+      </video>
+      <div className="absolute h-[80vh] top-[108px] 2xl:top-[88px] inset-0 bg-gradient-to-tr from-def/50 via-black/40 to-transparent">
+        <div className="flex flex-col items-center justify-center translate-y-40 gap-y-8 2xl:gap-y-10 mx-3 md:mx-10 lg:w-9/12 lg:mx-auto">
+          <h1 className="font-bold text-5xl text-center text-white 2xl:mb-4">Unlock the Power of Mechanical <span className="text-def">Mastery</span>.</h1>
+          <p className=" text-[#e6e6e6] font-mono text-center sm:mx-10 xl:w-10/12 2xl:w-8/12 2xl:mb-8">Our keyboards are a work of art, meticulously crafted for those who appreciate the finer details. With precision engineering and attention to every aspect of design, they offer a typing experience that is second to none.</p>
+          <button className="bg-def px-6 py-3 text-white rounded-md font-semibold hover:bg-transparent hover:text-def hover:font-bold hover:border border-white">Browse</button>
+        </div>
+      </div>
     </div>
   )
 }
