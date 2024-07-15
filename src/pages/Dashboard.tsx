@@ -1,5 +1,6 @@
 import AddModal from "@/components/AddModal"
 import AlertConfirmationDialog from "@/components/AlertConfirmationDialog"
+import ProductPagination from "@/components/ProductPagination"
 import {
     Table,
     TableBody,
@@ -11,10 +12,22 @@ import {
 import UpdateModal from "@/components/UpdateModal"
 import { useGetProductsQuery } from "@/redux/api/baseApi"
 import { TProducts } from "@/types"
+import { useState } from "react"
 
 const Dashboard = () => {
-    const { data } = useGetProductsQuery({})
- ;
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
+    const { data } = useGetProductsQuery({
+        page: currentPage,
+        limit: itemsPerPage,
+    });
+    console.log(data);
+
+    const handlePageChange = (page: number) => {
+        setCurrentPage(page);
+    };
+
+    const totalPages = data?.pagination?.totalPages || 1;
 
     return (
         <div className="w-3/4 mt-36 mx-auto bg-slate-100/30 rounded-lg p-5">
@@ -55,6 +68,7 @@ const Dashboard = () => {
                     ))}
                 </TableBody>
             </Table>
+            <ProductPagination handlePageChange={handlePageChange} totalPages={totalPages} currentPage={currentPage} />
         </div>
     )
 }
