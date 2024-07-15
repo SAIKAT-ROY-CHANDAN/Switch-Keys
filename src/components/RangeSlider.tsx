@@ -24,7 +24,7 @@ const RangeSlider = ({ priceRange, setPriceRange }: any) => {
                             width: '150px',
                             background: getTrackBackground({
                                 values: priceRange,
-                                colors: ['#ccc', '#548BF4', '#ccc'],
+                                colors: ['#ccc', '#020009', '#ccc'],
                                 min: MIN,
                                 max: MAX,
                             }),
@@ -40,10 +40,10 @@ const RangeSlider = ({ priceRange, setPriceRange }: any) => {
                         {...props}
                         style={{
                             ...props.style,
-                            height: '24px',
-                            width: '24px',
+                            height: '22px',
+                            width: '22px',
                             borderRadius: '12px',
-                            backgroundColor: '#548BF4',
+                            backgroundColor: '#020009',
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
@@ -52,9 +52,9 @@ const RangeSlider = ({ priceRange, setPriceRange }: any) => {
                     >
                         <div
                             style={{
-                                height: '16px',
+                                height: '14px',
                                 width: '5px',
-                                backgroundColor: isDragged ? '#548BF4' : '#CCC'
+                                backgroundColor: isDragged ? '#020009' : '#CCC'
                             }}
                         />
                     </div>

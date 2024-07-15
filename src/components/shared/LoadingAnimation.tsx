@@ -22,7 +22,7 @@ const LoadingAnimation = () => {
                 animate="rotate"
             >
                 <motion.div
-                    className="absolute left-0 top-0 h-4 w-4 rounded-full bg-black"
+                    className="absolute left-0 top-0 h-4 w-4 rounded-full bg-def"
                     initial="initial"
                     animate="animate"
                     transition={{ delay: 0 }}
@@ -40,7 +40,7 @@ const LoadingAnimation = () => {
                     transition={{ delay: 0.4 }}
                 ></motion.div>
                 <motion.div
-                    className="absolute bottom-0 right-0 h-4 w-4 rounded-full bg-black"
+                    className="absolute bottom-0 right-0 h-4 w-4 rounded-full bg-def"
                     initial="initial"
                     animate="animate"
                     transition={{ delay: 0.6 }}

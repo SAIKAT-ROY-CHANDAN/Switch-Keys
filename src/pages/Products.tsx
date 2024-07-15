@@ -61,7 +61,11 @@ const Products = () => {
 
 
   if (isLoading) {
-    return <LoadingAnimation />
+    return (
+      <div className="translate-y-40">
+        <LoadingAnimation />
+      </div>
+    )
   }
 
 

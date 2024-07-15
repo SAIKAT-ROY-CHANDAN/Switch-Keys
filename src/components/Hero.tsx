@@ -1,4 +1,5 @@
 import heroVid from "../assets/videos/herovideo.mp4"
+import ShinyButton from "./ui/ShinyButton"
 
 const Hero = () => {
 
@@ -11,7 +12,9 @@ const Hero = () => {
         <div className="flex flex-col items-center justify-center translate-y-40 gap-y-8 2xl:gap-y-10 mx-3 md:mx-10 lg:w-9/12 lg:mx-auto">
           <h1 className="font-bold text-5xl text-center text-white 2xl:mb-4">Unlock the Power of Mechanical <span className="text-def">Mastery</span>.</h1>
           <p className=" text-[#e6e6e6] font-mono text-center sm:mx-10 xl:w-10/12 2xl:w-8/12 2xl:mb-8">Our keyboards are a work of art, meticulously crafted for those who appreciate the finer details. With precision engineering and attention to every aspect of design, they offer a typing experience that is second to none.</p>
-          <button className="bg-def px-6 py-3 text-white rounded-md font-semibold hover:bg-transparent hover:text-def hover:font-bold hover:border border-white">Browse</button>
+          <ShinyButton className="">
+            Browse
+          </ShinyButton>
         </div>
       </div>
     </div>
