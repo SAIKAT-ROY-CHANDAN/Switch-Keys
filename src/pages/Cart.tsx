@@ -8,12 +8,12 @@ import { Link } from "react-router-dom"
 
 const Cart = () => {
     const { data } = useGetCartItemsQuery({})
-    const totalPrice = useAppSelector((state) => state.totalPrice.totalPrice);
-    const subTotal = useAppSelector((state) => state.totalPrice.totalQuantity);
+    const totalPrice = useAppSelector((state) => state?.totalPrice?.totalPrice);
+    const subTotal = useAppSelector((state) => state?.totalPrice?.totalQuantity);
 
     useEffect(() => {
         const handleBeforeUnload = (event: BeforeUnloadEvent) => {
-            if (data?.data.length > 0) {
+            if (data?.data?.length > 0) {
                 event.preventDefault();
                 event.returnValue = 'You have items in your cart. Are you sure you want to leave?';
             }
@@ -32,8 +32,8 @@ const Cart = () => {
                 <div className="bg-white w-full xl:w-[700px] border rounded-lg">
                     <h1 className="font-medium text-2xl border-b p-4 font-mono">Shopping Cart</h1>
                     {
-                        data?.data.map((cart: TAddCart) => (
-                            <CartCard key={cart._id} cart={cart} />
+                        data?.data?.map((cart: TAddCart) => (
+                            <CartCard key={cart?._id} cart={cart} />
                         ))
                     }
                 </div>
