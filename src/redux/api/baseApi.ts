@@ -30,7 +30,7 @@ export const baseApi = createApi({
                     body: data,
                 }
             },
-            invalidatesTags: ['products']
+            invalidatesTags: ['products', 'carts']
         }),
         getCartItems: builder.query({
             query: () => {
