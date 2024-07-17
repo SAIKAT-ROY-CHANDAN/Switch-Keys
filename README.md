@@ -14,8 +14,8 @@ Switchkeys is built using a modern web development stack to ensure high performa
 - **React-Router-Dom**: For handling client-side routing.
 - **Framer-Motion**: For creating smooth animations.
 - **TailwindCSS**: For utility-first CSS styling.
-- **Lucide-React & React-Icons**: For including a wide variety of icons.
-- **Radix-UI Components**: For accessible, unstyled components like alert dialogs, labels, sliders, etc.
+- **Hero-Icons & React-Icons**: For including a wide variety of icons.
+- **Shadcn UI**: For accessible, unstyled components like alert dialogs, labels, sliders, etc.
 
 ### State Management
 - **Redux Toolkit**: For managing the global state.
@@ -34,7 +34,6 @@ Switchkeys is built using a modern web development stack to ensure high performa
 - **TypeScript**: For static type checking.
 - **ESLint**: For maintaining code quality.
 - **Vite**: For fast and optimized building and development.
-- **PostCSS & Autoprefixer**: For processing CSS and ensuring cross-browser compatibility.
 
 ## Installation Guide
 
