@@ -2,6 +2,8 @@
 
 Switchkeys is a sophisticated and dynamic website dedicated to mechanical keyboards. Whether you are a casual typist, a gamer, or a mechanical keyboard enthusiast, Switchkeys provides an extensive range of features to explore and customize your mechanical keyboard experience. From detailed product descriptions, user reviews, and ratings to interactive selection tools and comparison features, Switchkeys aims to be the ultimate online destination for mechanical keyboard enthusiasts.
 
+Live: https://switch-keys.vercel.app/
+
 ## Technologies Used
 
 Switchkeys is built using a modern web development stack to ensure high performance, scalability, and an engaging user experience:
@@ -40,7 +42,7 @@ To run the Switchkeys project locally, follow these steps:
 
 ### Clone the Repository
 ```sh
-git clone https://github.com/your-username/switchkeys.git
+git clone [https://github.com/SAIKOT-ROY/switchkeys.git](https://github.com/SAIKOT-ROY/Switch-Keys/edit/main/README.md)
 cd switchkeys
 ```
 
