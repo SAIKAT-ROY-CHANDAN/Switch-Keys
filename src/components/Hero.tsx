@@ -2,7 +2,6 @@ import heroVid from "../assets/videos/herovideo.mp4"
 import ShinyButton from "./ui/ShinyButton"
 
 const Hero = () => {
-
   return (
     <div className="w-full mt-[108px] 2xl:mt-[88px]">
       <video className="w-full relative top-0 h-[80vh] object-cover" autoPlay loop muted>

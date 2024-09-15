@@ -1,9 +1,6 @@
 import { logos } from "../constants"
 
-
 const Brands = () => {
-
-   
     return (
         <div className="w-full py-12 mb-20">
             <div className="flex w-full flex-col items-center justify-center px-4 md:px-8">

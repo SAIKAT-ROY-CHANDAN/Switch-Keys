@@ -5,7 +5,6 @@ const RangeSlider = ({ priceRange, setPriceRange }: any) => {
     const MIN = 0;
     const MAX = 1000;
 
-
     return (
         <div className='flex flex-col w-full'>
             <Range

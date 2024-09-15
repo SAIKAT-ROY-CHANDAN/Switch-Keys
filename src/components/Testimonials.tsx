@@ -3,7 +3,6 @@ import TestimonialCard from "./TestimonialCard"
 
 
 const Testimonials = () => {
-
   return (
     <div className="flex flex-col items-center justify-center gap-5 py-12">
       <h1 className="mb-1 max-w-2xl text-center text-2xl font-semibold tracking-tighter text-gray-900 md:text-4xl dark:text-gray-100">

@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 import LayoutGrid from "./KeyBoardLayout";
 
-
-
 const Grid = () => {
     const textStyle = {
         background: 'linear-gradient(180deg, rgba(26, 26, 26, 0.2), rgba(26, 26, 26, 0) 100%)',

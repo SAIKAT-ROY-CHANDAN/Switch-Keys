@@ -2,7 +2,6 @@ import { motion } from "framer-motion"
 import { projectsData } from "../constants"
 
 const Service = () => {
-
     return (
         <div className="my-20">
             <div className="grid w-[80vw] justify-items-center items-center grid-cols-2 gap-10 md:grid-cols-3  mx-auto">

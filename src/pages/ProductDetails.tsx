@@ -2,7 +2,6 @@
 import { useParams } from "react-router-dom";
 import { useGetSingleProductsQuery, usePostProductMutation } from "@/redux/api/baseApi"
 import { useAppSelector } from "@/redux/hooks";
-// import { decrement, increment } from "@/redux/features/quantityCounterSlice";
 import { toast } from "sonner";
 import StarRating from "@/components/shared/StarRating";
 
@@ -11,18 +10,7 @@ const ProductDetails = () => {
     const { data } = useGetSingleProductsQuery(id);
     const { image, title, price, quantity, rating, desc, brand, brandImg, _id, inStock } = data?.data || {};
     const count = useAppSelector((state) => state.quantity.counters || 0);
-    console.log(count);
-    // const dispatch = useAppDispatch();
     const [postProduct] = usePostProductMutation();
-
-
-    // const handleIncrement = () => {
-    //     dispatch(increment({ maxQuantity: quantity }));
-    // };
-
-    // const handleDecrement = () => {
-    //     dispatch(decrement());
-    // };
 
     const handleAddToCart = async () => {
         try {

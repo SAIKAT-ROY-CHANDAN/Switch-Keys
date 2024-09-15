@@ -3,7 +3,6 @@ import NewArrivalCard from "./NewArrivalCard"
 import { TProducts } from "@/types";
 import { Link } from "react-router-dom";
 
-
 const NewArrival = () => {
   const { data } = useGetProductsQuery({})
 

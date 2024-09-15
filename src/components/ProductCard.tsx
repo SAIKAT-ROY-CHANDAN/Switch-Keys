@@ -9,35 +9,6 @@ interface NewArrivalCardProps {
 
 const ProductCard = ({ item }: NewArrivalCardProps) => {
     const { title, quantity, desc, brandImg, price, rating, _id } = item;
-    // const [postProduct] = usePostProductMutation();
-
-    // const handleAddToCart = async () => {
-    //     try {
-    //         const productData = {
-    //             productId: _id,
-    //             title,
-    //             image,
-    //             brand,
-    //             brandImg,
-    //             quantity,
-    //             price,
-    //             rating,
-    //             desc,
-    //             orderCount: 1
-    //         }
-
-    //         console.log(productData);
-
-    //         const res = await postProduct(productData).unwrap();
-    //         if (res?.success) {
-    //             toast.success('Product added to cart successfully')
-    //         }
-    //     } catch (error: any) {
-    //         toast.error(error?.message || 'Failed to add product to cart')
-    //     }
-
-    // }
-
 
     return (
         <div className="group">
