@@ -2,6 +2,8 @@ import { TProducts } from "@/types";
 import { CardBody, CardContainer, CardItem } from "./ui/3d-card"
 import { Link } from "react-router-dom";
 import StarRating from "./shared/StarRating";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 interface NewArrivalCardProps {
     item: TProducts;
@@ -9,17 +11,24 @@ interface NewArrivalCardProps {
 
 const NewArrivalCard = ({ item }: NewArrivalCardProps) => {
     return (
-        <CardContainer className="inter-var">
+        <CardContainer className="inter-var mt-10">
             <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-[80vw] sm:w-[25rem]
-             lg:w-[22rem] xl:w-[24rem] h-auto rounded-xl p-6 border">
+             lg:w-[22rem] xl:w-[24rem] h-auto rounded-xl p-6 border transition-all duration-200">
                 <CardItem translateZ="100" className="w-full">
-                    <img
-                        src={item?.image}
-                        height="1000"
-                        width="1000"
-                        className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-                        alt="thumbnail"
-                    />
+
+                    {item?.image ? (
+                        <LazyLoadImage
+                            height="1000"
+                            width="1000"
+                            className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                            src={item?.image}
+                            effect="blur"
+                            alt="thumbnail"
+                        />
+                    ) : (
+                        <div className="h-60 w-full bg-gray-200 rounded-xl animate-pulse"></div>
+                    )}
+
                 </CardItem>
                 <CardItem
                     translateZ="60"

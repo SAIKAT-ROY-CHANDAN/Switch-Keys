@@ -1,5 +1,6 @@
 import { cn } from "../../lib/utils"
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 export const BentoGrid = ({
     className,
@@ -46,9 +47,11 @@ export const BentoGridItem = ({
             <div className="h-full">
                 <div className="bg-gradient-to-r from-slate-900 to-slate-700 
                 group-hover/bento:bg-gradient-to-r  flex items-center justify-center">
-                    <img
+                    <LazyLoadImage
                         className="group-hover/bento:rotate-2 group-hover/bento:scale-95 duration-200 h-[23vh] w-fit object-contain"
-                        src={icon} alt="item"
+                        src={icon}
+                        effect="blur"
+                        alt="item"
                     />
                 </div>
                 {/* {header} */}

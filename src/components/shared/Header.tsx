@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import switchKeys from "../../assets/icons/logo.svg"
 import { Button } from "../ui/button";
@@ -7,7 +7,7 @@ import { navigation } from "../../constants/index.ts"
 import { CartSvg } from "../svgs/index.tsx";
 
 const Header = () => {
-
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = useLocation();
   const [openNavigation, setOpenNavigation] = useState(false);
 
@@ -19,17 +19,39 @@ const Header = () => {
     }
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 100) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+
   const handleClick = () => {
     if (!openNavigation) return;
 
     setOpenNavigation(false);
   };
 
+  const getTextColor = () => {
+    return location.pathname === '/' && !isScrolled ? 'text-white' : 'text-black';
+  };
+
 
   return (
     <div
-      className={`fixed top-0 left-0 w-full z-50 bg-white/80 border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm ${openNavigation ? "bg-n-8" : "bg-n-8/90 backdrop-blur-sm"
-        }`}
+      className={`z-50 top-0 left-0 fixed mx-auto w-full transition-transform duration-300 ${isScrolled ? 'bg-slate-50 shadow-lg' : 'bg-transparent'
+        } ${getTextColor()}`}
     >
       <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4">
         <Link to='/' className="block w-[12rem] xl:mr-8">
@@ -38,9 +60,9 @@ const Header = () => {
 
         <nav
           className={`${openNavigation ? "flex bg-white/80" : "hidden"
-            } fixed top-[5rem] left-0 right-0 bottom-0 bg-n-8 lg:static lg:flex lg:mx-auto lg:bg-transparent`}
+            } fixed left-0 right-0 bottom-0 bg-n-8 lg:static lg:flex lg:mx-auto lg:bg-transparent`}
         >
-          <div className="relative z-2 flex flex-col items-center justify-center m-auto lg:flex-row">
+          <div className="relative z-2 flex flex-col items-center justify-center mx-auto lg:flex-row">
             {navigation.map((item) => (
               <Link
                 key={item.id}
@@ -59,13 +81,15 @@ const Header = () => {
 
         </nav>
 
-        <Link to='/cart' className="mr-4 relative hidden cursor-pointer hover:text-def hover:scale-105 duration-150 lg:block">
-         <CartSvg />
-        </Link>
+        <div className="flex">
+          <Link to='/cart' className="mr-4 relative hidden cursor-pointer hover:text-def hover:scale-105 duration-150 lg:block">
+            <CartSvg />
+          </Link>
 
-        <Link to="/dashboard" className="hidden hover:text-def hover:scale-105 duration-150 lg:flex">
-          Dashboard
-        </Link>
+          <Link to="/dashboard" className="hidden hover:text-def hover:scale-105 duration-150 lg:flex">
+            Dashboard
+          </Link>
+        </div>
 
         <Button
           className="ml-auto lg:hidden"

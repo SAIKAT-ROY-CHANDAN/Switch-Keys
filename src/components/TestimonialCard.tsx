@@ -24,6 +24,7 @@ const TestimonialCard = ({
                     alt={image}
                     width={120}
                     height={80}
+                    loading="lazy"
                 />
                 <div className="mb-0 flex h-fit flex-col items-start">
                     <h3 className="m-0 text-base font-medium text-gray-900 dark:text-gray-100">

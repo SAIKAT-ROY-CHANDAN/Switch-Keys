@@ -2,6 +2,8 @@
 import { TProducts } from "@/types";
 import StarRating from "./shared/StarRating";
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 interface NewArrivalCardProps {
     item: TProducts;
@@ -11,9 +13,14 @@ const ProductCard = ({ item }: NewArrivalCardProps) => {
     const { title, quantity, desc, brandImg, price, rating, _id } = item;
 
     return (
-        <div className="group">
-            <div className="bg-[#545455] border-b-transparent rounded-lg rounded-b-none border h-[210px] w-[288px]">
-                <img className="object-cover h-full object-center rounded-t-lg group-hover:scale-[101%] duration-200 " src={item?.image} alt="" />
+        <div className="group h-96">
+            <div className="border-b-transparent rounded-lg rounded-b-none border h-[210px] w-[288px] overflow-hidden">
+                <LazyLoadImage
+                    className="object-cover h-full w-full rounded-t-lg group-hover:scale-105 duration-300 transition-all"
+                    src={item?.image}
+                    effect="blur"
+                    alt="product-img"
+                />
             </div>
             <Link to={`/products/${_id}`} className="px-4 py-3 shadow-md w-[286px] bg-[#F9FAFB] rounded-t-none rounded-lg flex flex-col gap-y-2">
                 <div className="flex gap-x-7 justify-between">
