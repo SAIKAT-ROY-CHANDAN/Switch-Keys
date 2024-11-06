@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import switchKeys from "../../assets/icons/logo.svg"
+import switchKeys from "../../assets/icons/switchkeys.svg"
 import { Button } from "../ui/button";
 import MenuSvg from "../MenuSvg";
 import { navigation } from "../../constants/index.ts"
@@ -55,7 +55,7 @@ const Header = () => {
     >
       <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4">
         <Link to='/' className="block w-[12rem] xl:mr-8">
-          <img src={switchKeys} width={190} height={40} alt="switch" />
+          <img src={switchKeys} width={40} height={20} alt="switch" />
         </Link>
 
         <nav

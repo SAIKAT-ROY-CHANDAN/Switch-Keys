@@ -39,7 +39,7 @@ export default NewArrival
 
 const NewArrivalSkeletonCard = () => {
   return (
-    <div className="animate-pulse flex flex-col items-center p-4 mb-4 border border-gray-300 rounded-lg">
+    <div className="animate-pulse flex flex-col items-center p-4 mb-4 rounded-lg">
       <div className="w-full h-48 bg-gray-200 rounded-md mb-4"></div>
       <div className="h-6 w-3/4 bg-gray-200 rounded-md mb-2"></div>
       <div className="h-4 w-1/2 bg-gray-200 rounded-md"></div>
