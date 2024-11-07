@@ -14,7 +14,6 @@ const CartCard = ({ cart }: CartCardProps) => {
     const [deleteCartItem] = useDeleteCartItemMutation()
     const dispatch = useAppDispatch()
     const orderCount = useAppSelector((state) => state.totalPrice.counters[cart._id]?.orderCount ?? cart.orderCount);
-    console.log(orderCount);
 
     useEffect(() => {
         dispatch(initializeCartItem({

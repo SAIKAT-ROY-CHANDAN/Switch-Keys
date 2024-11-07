@@ -15,8 +15,8 @@ const NewArrival = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 md:gap-x-1 gap-x-2">
         {isLoading
           ? Array.from({ length: 8 }).map((_, index) => (
-            <div className="w-[80%] mb-6 mx-auto mt-14">
-              <NewArrivalSkeletonCard key={index} />
+            <div className="w-[80%] mb-6 mx-auto mt-14" key={index}>
+              <NewArrivalSkeletonCard />
             </div>
           ))
           : data?.data.slice(0, 8).map((item: TProducts) => (

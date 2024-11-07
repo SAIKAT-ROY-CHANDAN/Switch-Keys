@@ -2,7 +2,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const baseApi = createApi({
     reducerPath: 'baseApi',
-    baseQuery: fetchBaseQuery({ baseUrl: "https://switch-keys-as-server-4.vercel.app/api/" }),
+    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/" }),
+    // baseQuery: fetchBaseQuery({ baseUrl: "https://switch-keys-as-server-4.vercel.app/api/" }),
     tagTypes: ['products', 'carts'],
     endpoints: (builder) => ({
         getProducts: builder.query({
@@ -49,6 +50,15 @@ export const baseApi = createApi({
         }),
         postOrder: builder.mutation({
             query: (data) => {
+                return {
+                    url: '/order/initiate-payment',
+                    method: "POST",
+                    body: data,
+                }
+            },
+        }),
+        postPaymentVerifiedOrder: builder.mutation({
+            query: (data) => {
                 console.log(data);
                 return {
                     url: '/order/delivery',
@@ -56,7 +66,7 @@ export const baseApi = createApi({
                     body: data,
                 }
             },
-        })
+        }),
     })
 })
 
@@ -66,5 +76,6 @@ export const {
     usePostProductMutation,
     useGetCartItemsQuery,
     useDeleteCartItemMutation,
-    usePostOrderMutation
+    usePostOrderMutation,
+    usePostPaymentVerifiedOrderMutation
 } = baseApi

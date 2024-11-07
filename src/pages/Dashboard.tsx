@@ -49,7 +49,11 @@ const Dashboard = () => {
                         <TableRow key={item._id}>
                             <TableCell className="font-medium w-[22%]">{item?.title}</TableCell>
                             <TableCell>
-                                <img className="size-8 rounded-xl" src={item.image} alt="" />
+                                <img
+                                    className="size-8 hidden md:block rounded-xl"
+                                    src={item.image}
+                                    alt="product-img"
+                                />
                             </TableCell>
                             <TableCell>$ {item?.price}</TableCell>
                             <TableCell className="flex gap-4 justify-center">

@@ -108,3 +108,54 @@ export const SkeletonFour = () => {
     </div>
   );
 };
+
+export const SwitchKeysLogo = () => {
+  return (
+    <svg
+      width="45"
+      height="61"
+      viewBox="0 0 87 61"
+      xmlns="http://www.w3.org/2000/svg"
+      className="group fill-current transition-all duration-500"
+    >
+      <path
+        className="group-hover:fill-red-500"
+        d="M1.33589 10.5L26.3359 36.5L11.8359 36C4.60546 31.2668 2.43005 28.4322 0.335885 23C-0.13928 20.5209 -0.339856 15.4465 1.33589 10.5Z"
+        fill="url(#paint0_linear_26_5)"
+      />
+      <path
+        className="group-hover:fill-red-500"
+        d="M47.3357 11.5H18.3357L9.33569 2L11.8359 0H58.3357L47.3357 11.5Z"
+        fill="url(#paint1_linear_26_5)"
+      />
+      <path
+        className="group-hover:fill-red-500"
+        d="M44.3357 24L68.3357 0H85.3357L55.3357 30.5L86.3357 61H68.3357L31.8357 24H44.3357Z"
+        fill="url(#paint2_linear_26_5)"
+      />
+      <path
+        className="group-hover:fill-red-500"
+        d="M12.3357 49.5L0.335885 44C-0.300068 47.5156 0.0422697 49.4959 2.33569 53L2.35268 53.0218C5.28614 56.7903 6.93579 58.9095 13.3357 61H49.3357L38.3357 49.5H12.3357Z"
+        fill="url(#paint3_linear_26_5)"
+      />
+      <defs>
+        <linearGradient id="paint0_linear_26_5" x1="43.1678" y1="0" x2="67" y2="61" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#E9342C" />
+          <stop offset="1" stopColor="#F87C7C" />
+        </linearGradient>
+        <linearGradient id="paint1_linear_26_5" x1="43.1678" y1="0" x2="67" y2="61" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#E9342C" />
+          <stop offset="1" stopColor="#F87C7C" />
+        </linearGradient>
+        <linearGradient id="paint2_linear_26_5" x1="43.1678" y1="0" x2="67" y2="61" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#E9342C" />
+          <stop offset="1" stopColor="#F87C7C" />
+        </linearGradient>
+        <linearGradient id="paint3_linear_26_5" x1="43.1678" y1="0" x2="67" y2="61" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#E9342C" />
+          <stop offset="1" stopColor="#F87C7C" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+};

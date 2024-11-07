@@ -2,21 +2,20 @@
 import { BottomGradient, LabelInputContainer } from "./svgs";
 import { Input } from "./ui/acc-input";
 import { Label } from "./ui/label";
-import { useAppSelector } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { userInfoSchema } from "@/validation/zodValidation";
 import { toast } from "sonner";
 import { usePostOrderMutation } from "@/redux/api/baseApi";
-import { useNavigate } from "react-router-dom";
+import { setUserInfo } from "@/redux/features/authSlice";
 
 
 const Delivery = () => {
   const total = useAppSelector((state) => state.totalPrice.totalPrice);
   const orders = useAppSelector((state) => state.totalPrice.counters);
-  const navigate = useNavigate();
   const [postOrder] = usePostOrderMutation()
-
+  const dispatch = useAppDispatch()
   const {
     register,
     handleSubmit,
@@ -33,16 +32,27 @@ const Delivery = () => {
         ...data,
         orders
       }
-     
+
+      dispatch(setUserInfo({
+        firstname: data.firstname,
+        lastname: data.lastname,
+        email: data.email,
+        phone: data.phone,
+        address: data.address,
+      }));
+
       const res = await postOrder(orderData).unwrap();
       console.log(res);
+
       if (res?.success) {
-        toast.success('Order Placed successfully')
-        navigate('/success');
+        window.location.href = res.clientSecret.url;
+      } else {
+        toast.error("Failed to get payment URL.");
       }
+
     } catch (error: any) {
       console.log(error);
-      toast.error(error?.message || 'Failed to placed Order')
+      toast.error(error?.message || 'Failed to place Order');
     }
   };
 

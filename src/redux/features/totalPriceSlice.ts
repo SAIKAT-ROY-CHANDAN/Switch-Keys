@@ -28,7 +28,6 @@ const totalPriceSlice = createSlice({
     reducers: {
         initializeCartItem: (state, action: PayloadAction<{ id: string; quantity: number; price: number; orderCount: number, productId: string }>) => {
             const { id, quantity, price, orderCount, productId } = action.payload;
-            console.log(action.payload);
             if (!state.counters[id]) {
                 state.counters[id] = {
                     cartId: id,
