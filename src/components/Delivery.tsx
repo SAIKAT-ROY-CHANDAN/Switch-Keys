@@ -7,14 +7,14 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { userInfoSchema } from "@/validation/zodValidation";
 import { toast } from "sonner";
-// import { usePostOrderMutation } from "@/redux/api/baseApi";
+import { usePostOrderMutation } from "@/redux/api/baseApi";
 import { setUserInfo } from "@/redux/features/authSlice";
 
 
 const Delivery = () => {
   const total = useAppSelector((state) => state.totalPrice.totalPrice);
   const orders = useAppSelector((state) => state.totalPrice.counters);
-  // const [postOrder] = usePostOrderMutation()
+  const [postOrder] = usePostOrderMutation()
   const dispatch = useAppDispatch()
   const {
     register,
@@ -41,14 +41,14 @@ const Delivery = () => {
         address: data.address,
       }));
 
-      // const res = await postOrder(orderData).unwrap();
+      const res = await postOrder(orderData).unwrap();
       console.log(orderData);
 
-      // if (res?.success) {
-      //   window.location.href = res.clientSecret.url;
-      // } else {
-      //   toast.error("Failed to get payment URL.");
-      // }
+      if (res?.success) {
+        window.location.href = res.clientSecret.url;
+      } else {
+        toast.error("Failed to get payment URL.");
+      }
 
     } catch (error: any) {
       console.log(error);
