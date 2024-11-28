@@ -17,8 +17,8 @@ const Success = () => {
     useEffect(() => {
         const verifyPayment = async () => {
             try {
-                // const response = await fetch(`http://localhost:5000/api/order/verify-payment?session_id=${sessionId}`, {
-                const response = await fetch(`https://switch-keys-as-server-4.vercel.app/api/order/verify-payment?session_id=${sessionId}`, {
+                const response = await fetch(`http://localhost:5000/api/order/verify-payment?session_id=${sessionId}`, {
+                // const response = await fetch(`https://switch-keys-as-server-4.vercel.app/api/order/verify-payment?session_id=${sessionId}`, {
                     method: 'GET',
                 });
                 const data = await response.json();

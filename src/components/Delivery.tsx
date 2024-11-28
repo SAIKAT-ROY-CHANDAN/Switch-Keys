@@ -41,14 +41,14 @@ const Delivery = () => {
         address: data.address,
       }));
 
-      const res = await postOrder(orderData).unwrap();
-      console.log(res);
+      // const res = await postOrder(orderData).unwrap();
+      console.log(orderData);
 
-      if (res?.success) {
-        window.location.href = res.clientSecret.url;
-      } else {
-        toast.error("Failed to get payment URL.");
-      }
+      // if (res?.success) {
+      //   window.location.href = res.clientSecret.url;
+      // } else {
+      //   toast.error("Failed to get payment URL.");
+      // }
 
     } catch (error: any) {
       console.log(error);

@@ -53,7 +53,7 @@ const Header = () => {
         } ${getTextColor()}`}
     >
       <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4">
-        <Link to='/' className="block w-[12rem] xl:mr-8 z-50">
+        <Link to='/' className="block w-[12rem] xl:mr-8 z-50" aria-label="logo">
           <SwitchKeysLogo />
         </Link>
 
@@ -91,6 +91,7 @@ const Header = () => {
         </div>
 
         <Button
+          aria-label="menu-button"
           className="ml-auto lg:hidden z-50"
           onClick={toggleNavigation}
         >
